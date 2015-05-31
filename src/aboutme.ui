@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutMe</class>
+ <widget class="QDialog" name="AboutMe">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>417</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>EWControl</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:xx-large; font-weight:600; color:#333333;&quot;&gt;EWControl&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;This small graphical user interface attaches itself to earthworm and allows you to control the modules from a GUI. It can be used to stop, restart, and reconfigure EW. It has the ability to automatically refresh as well as manual refresh at the press of a button.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a name=&quot;user-content-installation&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;I&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;nstallation&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;This module requires the lastes version of a 32 Bit QT (&lt;/span&gt;&lt;a href=&quot;https://www.qt.io/download/&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; text-decoration: underline; color:#4183c4; background-color:transparent;&quot;&gt;https://www.qt.io/download/&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;) to be availible. If you wish to compile it, use the &amp;quot;-xplatform linux-g++-32&amp;quot; flag when configuring QT.&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;After running the enviorment/ew_params.bash&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;cd into the /src&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;qmake&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;make&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;make install&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;That should be all that is required. Alternatively a statically compiled version is provided, just move the ewcontrol to the /bin folder.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a name=&quot;user-content-use&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;U&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;se&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Add the MOD_GUISTATUS to the modules in earthworm.d&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;run ewcontrol&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Go to the system menu and hit connect ( 30s after a succesfull conection it should show the status, alternatively you can manually refresh)&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Activate Auto Update if desired.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a name=&quot;user-content-to-do&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;T&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:x-large; font-weight:600; color:#333333;&quot;&gt;o do:&lt;/span&gt;&lt;/p&gt;
+&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Maybe add the ability to change configuration files.&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Sense changes in configuration files and auto restart the proccesses.&lt;/span&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Add other statistics.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;If anyone is interested in this proyect or would like to help, contact me!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a name=&quot;user-content-credits&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-weight:600; color:#777777;&quot;&gt;C&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-weight:600; color:#777777;&quot;&gt;redits:&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;The people over at Instrumental Software Technologies, Inc. (ISTI) @ &lt;/span&gt;&lt;a href=&quot;http://www.isti.com/&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; text-decoration: underline; color:#4183c4; background-color:transparent;&quot;&gt;http://www.isti.com/&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Everyone who has ever worked with in the development of earthworm @&lt;/span&gt;&lt;a href=&quot;http://earthwormcentral.org/&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; text-decoration: underline; color:#4183c4; background-color:transparent;&quot;&gt;http://earthwormcentral.org&lt;/span&gt;&lt;/a&gt; &lt;/li&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;The QT Community @ &lt;/span&gt;&lt;a href=&quot;http://qt-project.org/&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; text-decoration: underline; color:#4183c4; background-color:transparent;&quot;&gt;http://qt-project.org/&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Thanks,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;Francisco J Hernandez.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Helvetica Neue, Helvetica, Segoe UI, Arial, freesans, sans-serif'; font-size:12pt; color:#333333;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Ok, Thanks!</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

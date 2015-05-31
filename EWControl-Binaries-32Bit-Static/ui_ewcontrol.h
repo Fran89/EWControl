@@ -40,6 +40,7 @@ public:
     QAction *actionDebug;
     QAction *actionQuit;
     QAction *actionAutoUpdate;
+    QAction *actionHelp;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label_6;
@@ -93,6 +94,8 @@ public:
         actionQuit->setObjectName(QStringLiteral("actionQuit"));
         actionAutoUpdate = new QAction(ewcontrol);
         actionAutoUpdate->setObjectName(QStringLiteral("actionAutoUpdate"));
+        actionHelp = new QAction(ewcontrol);
+        actionHelp->setObjectName(QStringLiteral("actionHelp"));
         centralWidget = new QWidget(ewcontrol);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -275,6 +278,7 @@ public:
         menuSystem->addSeparator();
         menuSystem->addAction(actionQuit);
         menuHelp->addAction(actionDebug);
+        menuHelp->addAction(actionHelp);
 
         retranslateUi(ewcontrol);
 
@@ -290,6 +294,7 @@ public:
         actionDebug->setText(QApplication::translate("ewcontrol", "Debug", 0));
         actionQuit->setText(QApplication::translate("ewcontrol", "Quit", 0));
         actionAutoUpdate->setText(QApplication::translate("ewcontrol", "AutoUpdate", 0));
+        actionHelp->setText(QApplication::translate("ewcontrol", "Help", 0));
         label_6->setText(QApplication::translate("ewcontrol", "EARTHWORM SYSTEM STATUS", 0));
         label_2->setText(QApplication::translate("ewcontrol", "Hostname-OS:", 0));
         HostOS->setText(QString());

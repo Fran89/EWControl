@@ -246,6 +246,7 @@
      <string>Help</string>
     </property>
     <addaction name="actionDebug"/>
+    <addaction name="actionHelp"/>
    </widget>
    <addaction name="menuSystem"/>
    <addaction name="menuHelp"/>
@@ -287,6 +288,11 @@
   <action name="actionAutoUpdate">
    <property name="text">
     <string>AutoUpdate</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
    </property>
   </action>
  </widget>

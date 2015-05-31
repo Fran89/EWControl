@@ -596,3 +596,8 @@ void ewcontrol::on_actionAutoUpdate_triggered()
         updateSta("Auto-Update has been changed");
     }
 }
+
+void ewcontrol::on_actionHelp_triggered()
+{
+    Help.show();
+}

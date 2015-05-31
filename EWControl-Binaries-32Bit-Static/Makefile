@@ -50,12 +50,16 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../src/main.cpp \
 		../src/ewcontrol.cpp \
-		ewcontrol_plugin_import.cpp moc_ewcontrol.cpp
+		../src/aboutme.cpp \
+		ewcontrol_plugin_import.cpp moc_ewcontrol.cpp \
+		moc_aboutme.cpp
 OBJECTS       = /opt/earthworm/trunk/lib/dirops_ew.o \
 		main.o \
 		ewcontrol.o \
+		aboutme.o \
 		ewcontrol_plugin_import.o \
-		moc_ewcontrol.o
+		moc_ewcontrol.o \
+		moc_aboutme.o
 DIST          = ../../../DevProj/QT/LocalQTS32/mkspecs/features/spec_pre.prf \
 		../../../DevProj/QT/LocalQTS32/mkspecs/common/shell-unix.conf \
 		../../../DevProj/QT/LocalQTS32/mkspecs/common/unix.conf \
@@ -198,8 +202,10 @@ DIST          = ../../../DevProj/QT/LocalQTS32/mkspecs/features/spec_pre.prf \
 		../../../DevProj/QT/LocalQTS32/mkspecs/features/exceptions.prf \
 		../../../DevProj/QT/LocalQTS32/mkspecs/features/yacc.prf \
 		../../../DevProj/QT/LocalQTS32/mkspecs/features/lex.prf \
-		../src/ewcontrol.pro ../src/ewcontrol.h ../src/main.cpp \
+		../src/ewcontrol.pro ../src/ewcontrol.h \
+		../src/aboutme.h ../src/main.cpp \
 		../src/ewcontrol.cpp \
+		../src/aboutme.cpp \
 		ewcontrol_plugin_import.cpp
 QMAKE_TARGET  = ewcontrol
 DESTDIR       = #avoid trailing-slash linebreak
@@ -228,7 +234,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Widgets.a /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Gui.a /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Core.a ui_ewcontrol.h $(OBJECTS)  
+$(TARGET): /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Widgets.a /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Gui.a /home/francisco/DevProj/QT/LocalQTS32/lib/libQt5Core.a ui_ewcontrol.h ui_aboutme.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../src/ewcontrol.pro ../../../DevProj/QT/LocalQTS32/mkspecs/linux-g++-32/qmake.conf ../../../DevProj/QT/LocalQTS32/mkspecs/features/spec_pre.prf \
@@ -564,9 +570,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/ewcontrol.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/ewcontrol.cpp ewcontrol_plugin_import.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/ewcontrol.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/ewcontrol.h ../src/aboutme.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/ewcontrol.cpp ../src/aboutme.cpp ewcontrol_plugin_import.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/ewcontrol.ui ../src/aboutme.ui $(DISTDIR)/
 
 
 clean:compiler_clean 
@@ -590,9 +596,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_ewcontrol.cpp
+compiler_moc_header_make_all: moc_ewcontrol.cpp moc_aboutme.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ewcontrol.cpp
+	-$(DEL_FILE) moc_ewcontrol.cpp moc_aboutme.cpp
 moc_ewcontrol.cpp: ../../../DevProj/QT/LocalQTS32/include/QtWidgets/QMainWindow \
 		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qmainwindow.h \
 		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qwidget.h \
@@ -712,18 +718,130 @@ moc_ewcontrol.cpp: ../../../DevProj/QT/LocalQTS32/include/QtWidgets/QMainWindow 
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qthread.h \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/QTime \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qdatetime.h \
+		../src/aboutme.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QDialog \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdialog.h \
 		/opt/earthworm/trunk/include/transport.h \
 		/opt/earthworm/trunk/include/platform.h \
 		../src/ewcontrol.h
 	/home/francisco/DevProj/QT/LocalQTS32/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS32/mkspecs/linux-g++-32 -I/home/francisco/Programs/EWControl/src -I/opt/earthworm/trunk/include -I/home/francisco/DevProj/QT/LocalQTS32/include -I/home/francisco/DevProj/QT/LocalQTS32/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS32/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS32/include/QtCore -I. -I/usr/include/c++/4.9 -I/usr/include/x86_64-linux-gnu/c++/4.9/32 -I/usr/include/c++/4.9/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed -I/usr/include ../src/ewcontrol.h -o moc_ewcontrol.cpp
 
+moc_aboutme.cpp: ../../../DevProj/QT/LocalQTS32/include/QtWidgets/QDialog \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdialog.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qwidget.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qwindowdefs.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qglobal.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qconfig.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfeatures.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsystemdetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qprocessordetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcompilerdetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtypeinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtypetraits.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsysinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlogging.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qflags.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbasicatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_bootstrap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qgenericatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_msvc.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv7.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv6.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv5.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_ia64.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_mips.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_x86.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_cxx11.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_gcc.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_unix.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qglobalstatic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmutex.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qnumeric.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobjectdefs.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qnamespace.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobjectdefs_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qwindowdefs_win.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobject.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstring.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qchar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbytearray.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qrefcount.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qarraydata.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringbuilder.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qalgorithms.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qiterator.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbytearraylist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcoreevent.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qscopedpointer.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmetatype.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvarlengtharray.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcontainerfwd.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qisenum.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobject_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmargins.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpaintdevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qrect.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsize.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qpoint.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpalette.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qcolor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qrgb.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringlist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qdatastream.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qiodevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qpair.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qregexp.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringmatcher.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qbrush.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvector.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qmatrix.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpolygon.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qregion.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qline.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtransform.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpainterpath.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qimage.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpixelformat.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpixmap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsharedpointer.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qshareddata.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qhash.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsharedpointer_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfont.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfontmetrics.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfontinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qsizepolicy.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qcursor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qkeysequence.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qevent.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvariant.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qdebug.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtextstream.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlocale.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qset.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcontiguouscache.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qurl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qurlquery.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfile.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfiledevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qvector2d.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtouchdevice.h \
+		../src/aboutme.h
+	/home/francisco/DevProj/QT/LocalQTS32/bin/moc $(DEFINES) -I/home/francisco/DevProj/QT/LocalQTS32/mkspecs/linux-g++-32 -I/home/francisco/Programs/EWControl/src -I/opt/earthworm/trunk/include -I/home/francisco/DevProj/QT/LocalQTS32/include -I/home/francisco/DevProj/QT/LocalQTS32/include/QtWidgets -I/home/francisco/DevProj/QT/LocalQTS32/include/QtGui -I/home/francisco/DevProj/QT/LocalQTS32/include/QtCore -I. -I/usr/include/c++/4.9 -I/usr/include/x86_64-linux-gnu/c++/4.9/32 -I/usr/include/c++/4.9/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.9/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed -I/usr/include ../src/aboutme.h -o moc_aboutme.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_ewcontrol.h
+compiler_uic_make_all: ui_ewcontrol.h ui_aboutme.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_ewcontrol.h
+	-$(DEL_FILE) ui_ewcontrol.h ui_aboutme.h
 ui_ewcontrol.h: ../src/ewcontrol.ui
 	/home/francisco/DevProj/QT/LocalQTS32/bin/uic ../src/ewcontrol.ui -o ui_ewcontrol.h
+
+ui_aboutme.h: ../src/aboutme.ui
+	/home/francisco/DevProj/QT/LocalQTS32/bin/uic ../src/aboutme.ui -o ui_aboutme.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -855,6 +973,9 @@ main.o: ../src/main.cpp ../src/ewcontrol.h \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qthread.h \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/QTime \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qdatetime.h \
+		../src/aboutme.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QDialog \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdialog.h \
 		/opt/earthworm/trunk/include/transport.h \
 		/opt/earthworm/trunk/include/platform.h \
 		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QApplication \
@@ -986,9 +1107,72 @@ ewcontrol.o: ../src/ewcontrol.cpp ../src/ewcontrol.h \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qthread.h \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/QTime \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qdatetime.h \
+		../src/aboutme.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QDialog \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdialog.h \
 		/opt/earthworm/trunk/include/transport.h \
 		/opt/earthworm/trunk/include/platform.h \
 		ui_ewcontrol.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/QVariant \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QAction \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qaction.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qactiongroup.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QApplication \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcoreapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qeventloop.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdesktopwidget.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qguiapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qinputmethod.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QButtonGroup \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qbuttongroup.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QFormLayout \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qformlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QLayout \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qlayoutitem.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qboxlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qgridlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QHBoxLayout \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QHeaderView \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qheaderview.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractitemview.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractscrollarea.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qitemselectionmodel.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qstyleoption.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractspinbox.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qvalidator.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qregularexpression.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qslider.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractslider.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qstyle.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtabbar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qrubberband.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QMenu \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qmenu.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QMenuBar \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qmenubar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QPushButton \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qpushbutton.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractbutton.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QSpacerItem \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QStatusBar \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qstatusbar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QTableView \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtableview.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QTextBrowser \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtextbrowser.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtextedit.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextdocument.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextoption.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextformat.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpen.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QToolBar \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtoolbar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QVBoxLayout \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QWidget \
 		/opt/earthworm/trunk/include/earthworm.h \
 		/opt/earthworm/trunk/include/earthworm_defs.h \
 		/opt/earthworm/trunk/include/earthworm_simple_funcs.h \
@@ -1001,6 +1185,165 @@ ewcontrol.o: ../src/ewcontrol.cpp ../src/ewcontrol.h \
 		/opt/earthworm/trunk/include/time_ew.h \
 		/opt/earthworm/trunk/include/macros.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ewcontrol.o ../src/ewcontrol.cpp
+
+aboutme.o: ../src/aboutme.cpp ../src/aboutme.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QDialog \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdialog.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qwidget.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qwindowdefs.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qglobal.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qconfig.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfeatures.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsystemdetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qprocessordetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcompilerdetection.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtypeinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtypetraits.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsysinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlogging.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qflags.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbasicatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_bootstrap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qgenericatomic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_msvc.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv7.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv6.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_armv5.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_ia64.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_mips.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_x86.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_cxx11.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_gcc.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qatomic_unix.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qglobalstatic.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmutex.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qnumeric.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobjectdefs.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qnamespace.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobjectdefs_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qwindowdefs_win.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobject.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstring.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qchar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbytearray.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qrefcount.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qarraydata.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringbuilder.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qalgorithms.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qiterator.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qbytearraylist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcoreevent.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qscopedpointer.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmetatype.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvarlengtharray.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcontainerfwd.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qisenum.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qobject_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmargins.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpaintdevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qrect.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsize.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qpoint.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpalette.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qcolor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qrgb.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringlist.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qdatastream.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qiodevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qpair.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qregexp.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qstringmatcher.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qbrush.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvector.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qmatrix.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpolygon.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qregion.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qline.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtransform.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpainterpath.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qimage.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpixelformat.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpixmap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsharedpointer.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qshareddata.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qhash.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qsharedpointer_impl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfont.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfontmetrics.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qfontinfo.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qsizepolicy.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qcursor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qkeysequence.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qevent.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qvariant.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qmap.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qdebug.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qtextstream.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qlocale.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qset.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcontiguouscache.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qurl.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qurlquery.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfile.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qfiledevice.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qvector2d.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtouchdevice.h \
+		ui_aboutme.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/QVariant \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QAction \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qaction.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qicon.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qactiongroup.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QApplication \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qcoreapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qeventloop.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qdesktopwidget.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qguiapplication.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qinputmethod.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QButtonGroup \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qbuttongroup.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QHBoxLayout \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qboxlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qlayoutitem.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qgridlayout.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QHeaderView \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qheaderview.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractitemview.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractscrollarea.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qframe.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qabstractitemmodel.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qitemselectionmodel.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qstyleoption.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractspinbox.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qvalidator.h \
+		../../../DevProj/QT/LocalQTS32/include/QtCore/qregularexpression.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qslider.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractslider.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qstyle.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtabbar.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtabwidget.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qrubberband.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QLabel \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qlabel.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QPushButton \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qpushbutton.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qabstractbutton.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QSpacerItem \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QTextBrowser \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtextbrowser.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/qtextedit.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextdocument.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextoption.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextcursor.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qtextformat.h \
+		../../../DevProj/QT/LocalQTS32/include/QtGui/qpen.h \
+		../../../DevProj/QT/LocalQTS32/include/QtWidgets/QVBoxLayout
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o aboutme.o ../src/aboutme.cpp
 
 ewcontrol_plugin_import.o: ewcontrol_plugin_import.cpp ../../../DevProj/QT/LocalQTS32/include/QtCore/QtPlugin \
 		../../../DevProj/QT/LocalQTS32/include/QtCore/qplugin.h \
@@ -1066,11 +1409,15 @@ ewcontrol_plugin_import.o: ewcontrol_plugin_import.cpp ../../../DevProj/QT/Local
 moc_ewcontrol.o: moc_ewcontrol.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ewcontrol.o moc_ewcontrol.cpp
 
+moc_aboutme.o: moc_aboutme.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_aboutme.o moc_aboutme.cpp
+
 ####### Install
 
 install_ewcontrol: first FORCE
 	@test -d $(INSTALL_ROOT)/opt/earthworm/trunk/bin || mkdir -p $(INSTALL_ROOT)/opt/earthworm/trunk/bin
-	-$(INSTALL_PROGRAM) /home/francisco/Programs/EWControl/src/ewcontrol $(INSTALL_ROOT)/opt/earthworm/trunk/bin/
+	-$(INSTALL_PROGRAM) /home/francisco/Programs/EWControl/EWControl-Binaries-32Bit-Static/ewcontrol $(INSTALL_ROOT)/opt/earthworm/trunk/bin/
+	-strip $(INSTALL_ROOT)/opt/earthworm/trunk/bin/ewcontrol
 
 uninstall_ewcontrol: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/earthworm/trunk/bin/ewcontrol

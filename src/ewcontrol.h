@@ -9,6 +9,8 @@
 #include <QThread>
 #include <QTime>
 
+#include "aboutme.h"
+
 extern "C" {
     #include "transport.h"
 }
@@ -39,6 +41,8 @@ private slots:
 
     void on_actionAutoUpdate_triggered();
 
+    void on_actionHelp_triggered();
+
 private:
     Ui::ewcontrol *ui;
     QLabel *status;
@@ -46,6 +50,7 @@ private:
     bool connected;
     bool autoup;
     bool Debug;
+    AboutMe Help;
 
     QStandardItemModel *mod;
 
