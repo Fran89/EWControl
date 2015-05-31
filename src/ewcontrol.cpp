@@ -333,7 +333,7 @@ int ewcontrol::connectToEw() {
         return -1;
     }
 
-    if ( GetModId( "MOD_STATUS", &MyModId ) != 0 ) {
+    if ( GetModId( "MOD_GUISTATUS", &MyModId ) != 0 ) {
         appendlog("status: Invalid module id <MOD_STATUS> exiting!\n");
         return -1;
     }
